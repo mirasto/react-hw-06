@@ -1,14 +1,13 @@
-const Filter = ({ onChange }) => {
+const Filter = ({ onChange, filterValue }) => {
   return (
     <div className="w-full max-w-md mx-auto">
-      <h2 className="text-center text-2xl font-semibold text-gray-800 mt-5 mb-4">
-        Filter contacts
-      </h2>
+      <h2 className="text-center text-2xl font-semibold text-gray-800 mt-5 mb-4">Filter contacts</h2>
 
       <input
         type="text"
         name="filter"
         onChange={onChange}
+        value={filterValue}
         placeholder="Search contacts..."
         className="
       w-full 

@@ -1,6 +1,4 @@
-import ContactItem from "./ContactItem/ContactItem";
-
-
+import ContactItem from '@components/ContactItem/ContactItem';
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
@@ -9,13 +7,7 @@ const ContactList = ({ contacts, onDelete }) => {
 
       <ul className="flex flex-col gap-3">
         {contacts.map(({ id, name, number }) => (
-          <ContactItem
-            key={id}
-            id={id}
-            name={name}
-            number={number}
-            onDelete={onDelete}
-          />
+          <ContactItem key={id} id={id} name={name} number={number} onDelete={onDelete} />
         ))}
       </ul>
     </div>
