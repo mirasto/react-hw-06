@@ -1,5 +1,9 @@
-// ContactItem.jsx
-const ContactItem = ({ id, name, number, onDelete }) => {
+import { useDispatch } from 'react-redux';
+import { removeContact } from '@redux/contactsSlice';
+
+const ContactItem = ({ id, name, number }) => {
+  const dispatch = useDispatch();
+
   return (
     <li
       className="
@@ -25,7 +29,7 @@ const ContactItem = ({ id, name, number, onDelete }) => {
           active:scale-[0.97]
           transition
         "
-        onClick={() => onDelete(id)}
+        onClick={() => dispatch(removeContact(id))}
       >
         Delete
       </button>

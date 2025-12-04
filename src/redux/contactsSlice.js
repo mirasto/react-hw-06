@@ -24,7 +24,7 @@ const contactsSlice = createSlice({
     addContact: (state, action) => {
       state.contactsBook.push(action.payload)
 		},
-		setContactsFilter: (state, action) => {
+		filterValue: (state, action) => {
 			state.filter = action.payload
 		},
 		removeContact: (state, action) => {
@@ -33,5 +33,5 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { addName, addNumber, addContact, setContactsFilter, removeContact } = contactsSlice.actions;
+export const { addName, addNumber, addContact, filterValue, removeContact } = contactsSlice.actions;
 export default contactsSlice.reducer;

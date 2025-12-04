@@ -28,10 +28,10 @@ const ContactForm = () => {
     dispatch(addNumber(''));
   };
 
+  const isDuplicate = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
+
   const handleSubmit = e => {
     e.preventDefault();
-    const isDuplicate = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
-
     
 
     if (isDuplicate) {
