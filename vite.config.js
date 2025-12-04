@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BASE_PATH = '/react-hw-05/';
+const BASE_PATH = '/react-hw-06/';
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? BASE_PATH : '/',
