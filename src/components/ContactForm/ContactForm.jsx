@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addName, addNumber, addContact } from '@redux/contactsSlice';
+import { addContact } from '@redux/contactsSlice';
+import { useState } from 'react';
 
 const ContactForm = () => {
-  const name = useSelector(state => state.contacts.name);
-  const number = useSelector(state => state.contacts.number);
+  const [name, setName] = useState('')
+  const [number, setNumber] = useState('')
   const contacts = useSelector(state => state.contacts.contactsBook);
 
   const dispatch = useDispatch();
@@ -13,19 +14,19 @@ const ContactForm = () => {
     const { name, value } = e.target;
     switch (name) {
       case 'name':
-        dispatch(addName(value));
+        setName(value)
         break;
       case 'number':
-        dispatch(addNumber(value));
+        setNumber(value)
         break;
       default:
         break;
     }
   };
 
-  const clearContactsInput = () => {
-    dispatch(addName(''));
-    dispatch(addNumber(''));
+  const clearContacts = () => {
+    setName('')
+    setNumber('')
   };
 
   const isDuplicate = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
@@ -36,7 +37,7 @@ const ContactForm = () => {
 
     if (isDuplicate) {
       alert(`${name} is already in contacts`);
-      clearContactsInput()
+      clearContacts()
       return;
     }
 
@@ -46,7 +47,7 @@ const ContactForm = () => {
       number,
     };
 
-    clearContactsInput()
+    clearContacts()
     dispatch(addContact(newContact));
   };
 

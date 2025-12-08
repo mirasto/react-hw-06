@@ -1,22 +1,22 @@
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { filterValue } from '../../redux/contactsSlice';
 
 const Filter = () => {
+  const filter = useSelector(state => state.contacts.filter);
 
-  const filter = useSelector((state) => state.contacts.filter)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleChangeInput = e => {
-      const { name, value } = e.target;
-  
-      switch (name) {
-        case 'filter':
-          dispatch(filterValue(value));
-          break;
-        default:
-          break;
-      }
-    };
+    const { name, value } = e.target;
+
+    switch (name) {
+      case 'filter':
+        dispatch(filterValue(value));
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="w-full max-w-md mx-auto">
