@@ -4,8 +4,8 @@ import { addContact } from '@redux/contactsSlice';
 import { useState } from 'react';
 
 const ContactForm = () => {
-  const [name, setName] = useState('')
-  const [number, setNumber] = useState('')
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
   const contacts = useSelector(state => state.contacts.contactsBook);
 
   const dispatch = useDispatch();
@@ -14,10 +14,10 @@ const ContactForm = () => {
     const { name, value } = e.target;
     switch (name) {
       case 'name':
-        setName(value)
+        setName(value);
         break;
       case 'number':
-        setNumber(value)
+        setNumber(value);
         break;
       default:
         break;
@@ -25,19 +25,19 @@ const ContactForm = () => {
   };
 
   const clearContacts = () => {
-    setName('')
-    setNumber('')
+    setName('');
+    setNumber('');
   };
 
-  const isDuplicate = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
-
+  
   const handleSubmit = e => {
     e.preventDefault();
-    
+
+    const isDuplicate = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
 
     if (isDuplicate) {
       alert(`${name} is already in contacts`);
-      clearContacts()
+      clearContacts();
       return;
     }
 
@@ -47,7 +47,7 @@ const ContactForm = () => {
       number,
     };
 
-    clearContacts()
+    clearContacts();
     dispatch(addContact(newContact));
   };
 
@@ -96,7 +96,7 @@ const ContactForm = () => {
         />
       </div>
 
-      {/* Button contacts */}
+      {/* Button add contact */}
       <button
         type="submit"
         className=" bg-blue-600 text-white font-semibold  px-6 py-2.5 rounded-lg  shadow-md hover:bg-blue-700   hover:shadow-lg active:scale-[0.97] transition-all duration-200"

@@ -9,21 +9,20 @@ const contactsSlice = createSlice({
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-		filter: '',
-		removeContact: '',
+    filter: '',
   },
   reducers: {
     addContact: (state, action) => {
-      state.contactsBook.push(action.payload)
-		},
-		filterValue: (state, action) => {
-			state.filter = action.payload
-		},
-		removeContact: (state, action) => {
-			state.contactsBook = state.contactsBook.filter(contact => contact.id !== action.payload);
-		}
+      state.contactsBook.push(action.payload);
+    },
+    filterValue: (state, action) => {
+      state.filter = action.payload;
+    },
+    deleteContact: (state, action) => {
+      state.contactsBook = state.contactsBook.filter(contact => contact.id !== action.payload);
+    },
   },
 });
 
-export const { addContact, filterValue, removeContact } = contactsSlice.actions;
+export const { addContact, filterValue, deleteContact } = contactsSlice.actions;
 export default contactsSlice.reducer;

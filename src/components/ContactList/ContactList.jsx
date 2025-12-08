@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 const ContactList = () => {
   const filter = useSelector(state => state.contacts.filter);
   const contacts = useSelector(state => state.contacts.contactsBook);
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+
+  const contactName = filter.toLowerCase();
+  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(contactName));
 
   return (
     <div className="w-full m-auto max-w-md mt-5">
