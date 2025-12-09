@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
+
 import { nanoid } from 'nanoid';
-import { addContact } from '@redux/contactsSlice';
+
 import { useState } from 'react';
+import { addContact } from '@redux/contactsSlice';
+import { selectContacts } from '@redux/selectors';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(state => state.contacts.contactsBook);
+  const contacts = useSelector(selectContacts);
 
   const dispatch = useDispatch();
 
@@ -29,7 +32,6 @@ const ContactForm = () => {
     setNumber('');
   };
 
-  
   const handleSubmit = e => {
     e.preventDefault();
 

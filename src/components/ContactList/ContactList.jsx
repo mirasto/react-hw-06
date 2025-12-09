@@ -1,12 +1,15 @@
 import ContactItem from '@components/ContactItem/ContactItem';
+
 import { useSelector } from 'react-redux';
+import { selectFilter, selectContacts } from '@redux/selectors';
 
 const ContactList = () => {
-  const filter = useSelector(state => state.contacts.filter);
-  const contacts = useSelector(state => state.contacts.contactsBook);
+  const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
 
-  const contactName = filter.toLowerCase();
-  const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(contactName));
+  const contactSearch = filter.toLowerCase();
+  const filteredContacts = contacts
+    .filter(contact => contact.name.toLowerCase().includes(contactSearch) || contact.number.includes(contactSearch));
 
   return (
     <div className="w-full m-auto max-w-md mt-5">
